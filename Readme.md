@@ -16,3 +16,8 @@
    ```bash
    git clone https://github.com/DevNexe/my_site.git
    ```
+
+2. Установите все зависимости:
+   ```bash
+   pip install pip install -r requirements.txt
+   ```
