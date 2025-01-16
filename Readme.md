@@ -21,3 +21,9 @@
    ```bash
    pip install pip install -r requirements.txt
    ```
+## Запуск приложения
+
+1. Запустите код:
+   ```bash
+   python app.py
+   ```
