@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='general.css') }}">
+</head>
+<body>
+    <div id="sidebar" class="sidebar">
+        <button id="close-button"><a><span class="material-symbols-rounded">menu</span></a></button>
+        <ol>
+            <a> </a>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/settings">Настройки</a></li>
+            <li><a href="/profile">Профиль</a></li>
+        </ol>
+    </div>
+    <div id="topbar" class="mb-3">
+        <div class="header">
+            <a id="menu-button" class="ab"><span class="material-symbols-rounded">menu</span></a>
+            <a class="zx" href="/" title="Вернуться на главную">DVNX блог</a>
+            <span id="settings-button" class="material-symbols-rounded" style="cursor: pointer;">page_info</span>
+            <div id="dropdown-menu" class="dropdown">
+                <select id="theme-selector">
+                    <option value="">Светлая тема</option>
+                    <option value="dark-theme">Тёмная тема</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="container">
+            <h1 class="text-center mb-4">Регистрация</h1>
+            <form method="POST" class="mb-3" onsubmit="return validateAdminPassword()">
+                <div>
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Пароль:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="form-check mb-3">
+                    <input type="checkbox" id="is_admin" name="is_admin" class="form-check-input" onchange="toggleAdminPassword()">
+                    <label for="is_admin" class="form-check-label">Административный аккаунт</label>
+                </div>
+                <div id="admin-password-field" class="mb-3" style="display: none;">
+                    <label for="admin_password" class="form-label">Спец. пароль:</label>
+                    <input type="password" id="admin_password" name="admin_password" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Зарегестрироваться</button>
+                {% if error %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endif %}
+                <a href="/login" class="btn btn-secondary">Уже есть аккаунт? Войти</a>
+            </form>
+        </div>
+    </div>
+    <script>
+        const settingsButton = document.getElementById('settings-button');
+        const dropdownMenu = document.getElementById('dropdown-menu');
+        const themeSelector = document.getElementById('theme-selector');
+
+        // Проверяем сохранённую тему
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.classList.add(savedTheme);
+            themeSelector.value = savedTheme;
+        }
+
+        // Показать/скрыть выпадающее меню
+        settingsButton.addEventListener('click', () => {
+            dropdownMenu.classList.toggle('active');
+        });
+
+        // Изменить тему
+        themeSelector.addEventListener('change', (event) => {
+            const selectedTheme = event.target.value;
+
+            // Удаляем все темы
+            document.body.classList.remove('dark-theme');
+
+            // Добавляем выбранную тему
+            if (selectedTheme) {
+                document.body.classList.add(selectedTheme);
+            }
+
+            // Сохраняем тему
+            localStorage.setItem('theme', selectedTheme);
+        });
+
+        // Закрываем меню при клике вне его
+        document.addEventListener('click', (event) => {
+            if (!dropdownMenu.contains(event.target) && event.target !== settingsButton) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    </script>
+    <script>
+        const menuButton = document.getElementById('menu-button');
+        const sidebar = document.getElementById('sidebar');
+        const closeButton = document.getElementById('close-button');
+
+        menuButton.onclick = function() {
+            sidebar.classList.toggle('open'); // Переключаем класс для открытия/закрытия
+        }
+
+        closeButton.onclick = function() {
+            sidebar.classList.remove('open'); // Закрываем боковую панель
+            content.classList.remove('blur');
+        }
+
+        document.getElementById('menu-button').onclick = function() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+
+            // Если боковая панель закрыта, открываем её и размываем контент
+            if (sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                content.classList.remove('blur');
+            } else {
+                sidebar.classList.add('open');
+                content.classList.add('blur');
+            }
+        };
+    </script>
+    <script>
+        function toggleAdminPassword() {
+            const adminField = document.getElementById('admin-password-field');
+            adminField.style.display = document.getElementById('is_admin').checked ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

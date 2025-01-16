@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+#topbar {
+    border-color: #00000000;
+    position: sticky; /* Прилипаем к верхней части */
+    top: 0; /* Привязываем к верхней части окна */
+    z-index: 1000; /* Устанавливаем высокий z-index, чтобы не перекрывался другими элементами */
+}
+
+.header {
+    background-color: #ebebebf5;
+    padding: 8px;
+    border-color: #00000000;
+    position: sticky; /* Прилипаем к верхней части */
+    top: 0; /* Привязываем к верхней части окна */
+    z-index: 1000; /* Устанавливаем высокий z-index, чтобы не перекрывался другими элементами */
+}
+
+#content {
+    transition: filter 0.3s ease;
+}
+
+.header a {
+    font-size: 20px; /* Размер шрифта */
+    color: black;
+    cursor: pointer;
+}
+
+.zx {
+    text-align: center;
+    text-decoration:none;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px; /* Скрываем за пределами экрана */
+    width: 250px;
+    height: 100%;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    transition: left 0.3s ease;
+    z-index: 1001; /* Выше других элементов */
+}
+
+.sidebar.active {
+    left: 0; /* Показываем боковую панель */
+}
+
+/* Сдвигаем боковую панель */
+.sidebar.open {
+    left: 0;
+}
+
+.sidebar li {
+    text-decoration: none;
+    padding: 10px;
+    list-style-type:  none;
+}
+
+.ab {
+    margin-top: 4px;
+    float: left;
+    text-decoration:none;
+}
+
+.sb {
+    margin-top: 4px;
+    float: right;
+    text-decoration:none;
+}
+
+#settings-button {
+    margin-top: 4px;
+    float: right;
+}
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 40
+}
+
+.sidebar span {
+    font-size: 25px;
+}
+
+.sidebar button {
+    border: 0px solid #00000000; /* Рамка вокруг input */
+    border-radius: 30px;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -khtml-border-radius: 30px;
+    font-size: 20px; /* Размер шрифта */
+    background-color: #00000000;
+    color: black;
+    padding: 10px 10px;
+    cursor: pointer;
+}
+
+.sidebar a {
+    padding: 5px;
+    font-weight: 800;
+    color: black;
+    text-decoration:none;
+}
+
+/* Темная тема */
+.dark-theme {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-theme .header {
+    background-color: #1e1e1e;
+}
+
+.dark-theme .sidebar {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    box-shadow: 2px 0 5px rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme a {
+    color: white;
+    text-decoration:none;
+}
+
+.dark-theme .list-group-item {
+    color: white;
+    text-decoration:none;
+    background-color: black;
+}
+
+.dark-theme button {
+    color: #ffffff;
+    background-color: #00000000;
+}
+
+.dark-theme .dropdown {
+    display: none;
+    position: absolute;
+    right: 10px; /* Расположено относительно кнопки */
+    top: 40px;
+    background-color: black;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+    padding: 10px;
+}
+
+.dark-theme .dropdown select {
+    width: 150px;
+    font-size: 16px;
+    padding: 5px;
+    background-color: black;
+}
+
+/* Выпадающее меню */
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 10px; /* Расположено относительно кнопки */
+    top: 40px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1002;
+    padding: 10px;
+}
+
+.dropdown select {
+    width: 150px;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.dropdown.active {
+    display: block;
+}
