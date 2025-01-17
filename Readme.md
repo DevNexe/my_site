@@ -8,14 +8,14 @@
 
 ## Скриншоты сайта
 Темная тема:
-![Главная страница от лица админа](/preview_images/drak1.png)
-![Главная страница от лица пользователя](/preview_images/drak5.png)
-![Главная страница от лица не авторизованого](/preview_images/drak4.png)
-![Страница входа в аккаунт](/preview_images/drak7.png)
-![Страница регистрации аккаунта](/preview_images/drak8.png)
-![Страница редактирования поста](/preview_images/drak6.png)
-![Боковая панель](/preview_images/drak2.png)
-![Переключатель темы](/preview_images/drak3.png)
+![Главная страница от лица админа](/preview_images/dark1.png)
+![Главная страница от лица пользователя](/preview_images/dark5.png)
+![Главная страница от лица не авторизованого](/preview_images/dark4.png)
+![Страница входа в аккаунт](/preview_images/dark7.png)
+![Страница регистрации аккаунта](/preview_images/dark8.png)
+![Страница редактирования поста](/preview_images/dark6.png)
+![Боковая панель](/preview_images/dark2.png)
+![Переключатель темы](/preview_images/dark3.png)
 
 Светлая тема:
 ![Главная страница от лица админа](/preview_images/light1.png)
